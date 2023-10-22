@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Make Yourself Happy ^_^</title>
+    <title>Make Yourself Happy</title>
     <!-- Meta Tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,25 +24,12 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/main.css" />
-
-    <style>
-      .empty-message {
-        text-transform: uppercase;
-        background-color: #f0f7f9; /* Subtle blue background */
-        padding: 20px;
-        text-align: center;
-        border-radius: 5px;
-        font-size: 18px;
-        color: #555; /* Dark gray text */
-        font-weight: bold; /* Make text bold */
-      }
-    </style>
   </head>
   <body>
     <!-- Main Header -->
     <header class="main-header">
       <div class="ui container">
-        <h1>Make Yourself Happy ^_^</h1>
+        <h1>Make Yourself Happy</h1>
       </div>
     </header>
     <!-- End Main Header -->
@@ -54,7 +41,7 @@
           id="add-task-input"
           class="large"
           type="text"
-          placeholder="Write a task for yourself..."
+          placeholder="Write your task here..."
         />
         <i class="tasks icon"></i>
       </form>
@@ -80,9 +67,7 @@
       <!-- End Buttons -->
 
       <!-- Tasks List -->
-      <ul id="tasks-list" class="ui segments">
-        <li class="empty-message">SET A TASK THAT WOULD MAKE YOU HAPPY</li>
-      </ul>
+      <ul id="tasks-list" class="ui segments"></ul>
       <!-- End Tasks List -->
 
       <!-- Edit Modal -->
@@ -159,4 +144,37 @@
           <div class="ui cancel red button">No</div>
           <div
             id="remove-button"
-            onclick="
+            onclick="clearAllTasks()"
+            class="ui positive right labeled icon button"
+          >
+            Yes
+            <i class="checkmark icon"></i>
+          </div>
+        </div>
+      </div>
+      <!-- End Clear Completed Tasks Modal -->
+    </div>
+
+    <!-- Scripts -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"
+      integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
+      integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script type="text/javascript" src="js/main.js"></script>
+  </body>
+</html>
