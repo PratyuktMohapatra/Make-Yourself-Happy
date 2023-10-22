@@ -1,259 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Survey form UI created for the FreeCodeCamp's Responsive Web Design Certification.">
-  <title>Survey Form</title>
-</head>
+  <head>
+    <title>Make Yourself Happy ^_^</title>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Links -->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+      integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css"
+      integrity="sha512-NXUhxhkDgZYOMjaIgd89zF2w51Mub53Ru3zCNp5LTlEzMbNNAjTjDbpURYGS5Mop2cU4b7re1nOIucsVlrx9fA=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/main.css" />
 
-<body>
-<div class="container">
-  <div class="header">
-    <div class="column-header">
-      <h1 id="title">Tell Us Your Story</h1>
-      <p id="description">Sometimes people cannot communicate through calls or even with texts, so we would like to know what your life is like, your past traumas, and your experiences with this form, which can be valuable to our specialists to provide more accurate solutions.</p>
-    </div>
-
-    <div class="column-image">
-      <div id="image-div">
-        <img src="images/survey_icon.svg" width="400" height="400" alt="Survey form icon">
+    <style>
+      .empty-message {
+        text-transform: uppercase;
+        background-color: #f0f7f9; /* Subtle blue background */
+        padding: 20px;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 18px;
+        color: #555; /* Dark gray text */
+        font-weight: bold; /* Make text bold */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main Header -->
+    <header class="main-header">
+      <div class="ui container">
+        <h1>Make Yourself Happy ^_^</h1>
       </div>
-    </div>
-  </div>
+    </header>
+    <!-- End Main Header -->
 
-  <form id="survey-form">
-    <div class="form-group">
-      <label id="name-label" for="name">Summarize your emotions for the last 2-3 years.</label>
-      <input
-        type="text"
-        name="name"
-        id="name"
-        class="form-control"
-        placeholder="Write here..."
-      />
-    </div>
-
-    <div class="form-group">
-      <label id="label" for="text">Describe your Past Traumas.</label>
-      <input
-        type="text"
-        name="text"
-        id="text"
-        class="form-control"
-        placeholder="Write here..."
-      />
-    </div>
-
-    <div class="form-group">
-      <label id="number-label" for="text">Describe your relationship with your parents, friends, and strangers.</label>
-      <input
-        type="text"
-        name="age"
-        id="number"
-        class="form-control"
-        placeholder="Write here..."
-      />
-    </div>
-
-    <div class="form-group">
-      <p>Employment Status</p>
-      <select id="dropdown" name="role" class="form-control">
-        <option value="student">Student</option>
-        <option value="job-full">Employed Full Time</option>
-        <option value="job-part">Employed Part Time</option>
-        <option value="self-employed">Self-employed</option>
-        <option value="unemployed">Unemployed</option>
-        <option value="retired">Retired</option>
-        <option value="preferNo">Prefer not to say</option>
-        <option value="other">Other</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <p>What Is Your Love Life Status?</p>
-      <select id="experience-dropdown" name="experience" class="form-control">
-        <option value="junior">In a relationship</option>
-        <option value="mid">Single</option>
-        <option value="senior">It's Complicated</option>
-        <option value="executive">Prefer not to say</option>
-        <option value="other"></option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <p>How much happy are you with your loved ones?</p>
-      <label>
+    <div class="ui container">
+      <!-- Add Task -->
+      <form id="add-task" class="ui left icon input fluid">
         <input
-          name="user-rate"
-          value="excellent"
-          type="radio"
-          class="input-radio"
-        />Very Happy</label>
-      <label>
-        <input
-          name="user-rate"
-          value="very-good"
-          type="radio"
-          class="input-radio"
-        />I love them, but I don't like them</label>
+          id="add-task-input"
+          class="large"
+          type="text"
+          placeholder="Write a task for yourself..."
+        />
+        <i class="tasks icon"></i>
+      </form>
+      <!-- End Add Task -->
 
-      <label>
-        <input
-          name="user-rate"
-          value="good"
-          type="radio"
-          class="input-radio"
-        />I'm never happy around them</label>
+      <!-- Buttons -->
+      <div id="buttons" class="ui stackable grid equal width">
+        <button
+          id="clear-all-tasks"
+          class="ui button column"
+          onclick="showClearAllTasksModal()"
+        >
+          Clear all tasks
+        </button>
+        <button
+          disabled
+          class="ui button column"
+          onclick="showClearCompletedTasksModal()"
+        >
+          Clear completed tasks
+        </button>
+      </div>
+      <!-- End Buttons -->
 
-      <label>
-        <input
-          name="user-rate"
-          value="fair"
-          type="radio"
-          class="input-radio"
-        />I'm having problems with them, actually</label>
+      <!-- Tasks List -->
+      <ul id="tasks-list" class="ui segments">
+        <li class="empty-message">SET A TASK THAT WOULD MAKE YOU HAPPY</li>
+      </ul>
+      <!-- End Tasks List -->
 
-      <label>
-        <input
-          name="user-rate"
-          value="poor"
-          type="radio"
-          class="input-radio"
-        />A feeling of hate has been created</label>
-    </div>
+      <!-- Edit Modal -->
+      <div id="edit-modal" class="ui tiny modal">
+        <div class="header">Update Your Task</div>
+        <div class="content">
+          <div class="ui fluid input">
+            <input id="task-id" type="hidden" />
+            <input id="task-text" type="text" />
+          </div>
+        </div>
+        <div class="actions">
+          <div class="ui cancel button">Cancel</div>
+          <div id="update-button" class="ui positive right labeled icon button">
+            Update
+            <i class="checkmark icon"></i>
+          </div>
+        </div>
+      </div>
+      <!-- End Edit Modal -->
 
-    <div class="form-group">
-      <p>How would you say your past traumas have affected your relationships with your loved ones (parents, friends, and strangers)?</p>
-      <label>
-        <input
-          name="materials-rate"
-          value="extremely"
-          type="radio"
-          class="input-radio"
-        />Greatly Improved</label>
-      <label>
-        <input
-          name="materials-rate"
-          value="very"
-          type="radio"
-          class="input-radio"
-        />Somewhat Improved</label>
+      <!-- Delete Modal -->
+      <div id="remove-modal" class="ui tiny modal">
+        <div class="header">Delete Your Task</div>
+        <div class="content">
+          <div class="ui fluid input">
+            <input id="task-id" type="hidden" />
+            <p>Are you sure you want to delete your task?</p>
+          </div>
+        </div>
+        <div class="actions">
+          <div class="ui cancel red button">No</div>
+          <div id="remove-button" class="ui positive right labeled icon button">
+            Yes
+            <i class="checkmark icon"></i>
+          </div>
+        </div>
+      </div>
+      <!-- End Delete Modal -->
 
-      <label>
-        <input
-          name="materials-rate"
-          value="somewhat"
-          type="radio"
-          class="input-radio"
-        />No Significant Change</label>
+      <!-- Clear All Tasks Modal -->
+      <div id="clear-all-tasks-modal" class="ui tiny modal">
+        <div class="header">Clear All Tasks</div>
+        <div class="content">
+          <div class="ui fluid input">
+            <input id="task-id" type="hidden" />
+            <p>Are you sure you want to clear all tasks?</p>
+          </div>
+        </div>
+        <div class="actions">
+          <div class="ui cancel red button">No</div>
+          <div
+            id="remove-button"
+            onclick="clearAllTasks()"
+            class="ui positive right labeled icon button"
+          >
+            Yes
+            <i class="checkmark icon"></i>
+          </div>
+        </div>
+      </div>
+      <!-- End Clear All Tasks Modal -->
 
-      <label>
-        <input
-          name="materials-rate"
-          value="not-so"
-          type="radio"
-          class="input-radio"
-        />Somewhat Affected</label>
-
-      <label>
-        <input
-          name="materials-rate"
-          value="no"
-          type="radio"
-          class="input-radio"
-        />Greatly Affected</label>
-    </div>
-
-    <div class="form-group">
-      <p>Do you have a friend to whom you can talk to about your feelings?</p>
-      <label>
-        <input
-          name="user-recommend"
-          value="definitely"
-          type="radio"
-          class="input-radio"
-        />Yes</label>
-      <label>
-        <input
-          name="user-recommend"
-          value="maybe"
-          type="radio"
-          class="input-radio"
-        />No</label>
-
-      <label>
-        <input
-          name="user-recommend"
-          value="not-sure"
-          type="radio"
-          class="input-radio"
-        />I have friends, but not the ones I can talk to.</label>
-    </div>
-
-    <div class="form-group">
-      <p>Select the statement that best represents your current readiness for change in improving your mental health and well-being:</p>
-      <label>
-        <input
-          name="prefer"
-          value="lectures"
-          type="checkbox"
-          class="input-checkbox"
-        />I'm actively seeking change and highly motivated.</label>
-
-      <label>
-        <input
-          name="prefer"
-          value="material"
-          type="checkbox"
-          class="input-checkbox"
-        />I'm interested and willing to make changes.</label>
-
-      <label>
-        <input
-          name="prefer"
-          value="assignments"
-          type="checkbox"
-          class="input-checkbox"
-        />I have some hope for change but need guidance.</label>
-
-      <label>
-        <input
-          name="prefer"
-          value="exams"
-          type="checkbox"
-          class="input-checkbox"
-        />I'm not very interested in making changes right now.</label>
-
-      <label>
-        <input
-          name="prefer"
-          value="forum"
-          type="checkbox"
-          class="input-checkbox"
-        />I'm not ready to make changes at this time.</label>
-    </div>
-
-    <div class "form-group">
-      <p>Anything you think that could help us?</p>
-      <textarea
-        id="comments"
-        class="input-textarea"
-        name="comment"
-        placeholder="Enter your comment here..."></textarea>
-    </div>
-
-    <div class="form-group">
-      <button type="submit" id="submit" class="submit-button">
-        Submit
-      </button>
-    </div>
-  </form>
-</div>
-
-<section class="footer">
-  <p>Design & Development - LOGIC LYNX</p>
-</section>
-
-</body>
-</html>
+      <!-- Clear Completed Tasks Modal -->
+      <div id="clear-completed-tasks-modal" class="ui tiny modal">
+        <div class="header">Clear Completed Tasks</div>
+        <div class="content">
+          <div class="ui fluid input">
+            <input id="task-id" type="hidden" />
+            <p>Are you sure you want to clear completed tasks?</p>
+          </div>
+        </div>
+        <div class="actions">
+          <div class="ui cancel red button">No</div>
+          <div
+            id="remove-button"
+            onclick="
